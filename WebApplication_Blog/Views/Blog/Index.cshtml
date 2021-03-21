@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication_Blog.Models.BlogModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Blog", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete Blog", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+        </td>
+    </tr>
+}
+
+</table>
+<h4>@ViewBag.Message</h4>
