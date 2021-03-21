@@ -43,6 +43,7 @@ namespace WebApplication_Blog.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Edit(int Id)
         {
             BlogDb db = new BlogDb();
@@ -64,6 +65,7 @@ namespace WebApplication_Blog.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             try

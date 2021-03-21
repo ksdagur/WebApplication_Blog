@@ -44,7 +44,7 @@ namespace WebApplication_Blog.Models
             cmd.Parameters.AddWithValue("@url", bmodel.url);
             int i = cmd.ExecuteNonQuery();
             con.Close();
-            return (i >= 1);
+            return (i > 0);
         }
 
        
@@ -96,7 +96,17 @@ namespace WebApplication_Blog.Models
             cmd.Parameters.AddWithValue("@bId", id);
             int i = cmd.ExecuteNonQuery();
             con.Close();
-            return (i >= 1);
+            return (i > 0);
+        }
+
+        public bool Login(Login lg)
+        {
+            var cmd = GetCommand("GetLogin");
+            cmd.Parameters.AddWithValue("@uid", lg.UserId);
+            cmd.Parameters.AddWithValue("@pwd", lg.Password);
+            bool IsLogin = ((int)cmd.ExecuteScalar()) > 0;
+            con.Close();
+            return IsLogin;
         }
     }
 }
